@@ -6,22 +6,24 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI leftScoreText;
     public TextMeshProUGUI rightScoreText;
     public TextMeshProUGUI scoreGoal;
+    public TextMeshProUGUI endGame;
     public Transform ball;
     public Transform greenPlayer;
     public Transform bluePlayer;
     public int greenScore = 0;
     public int blueScore = 0;
+    public Rigidbody2D rb;
     public void addGreenScore()
     {
         greenScore++;
-        leftScoreText.text = "Blue: " + greenScore;
-        scoreGoal.text = "Blue Goal";
+        leftScoreText.text = "Green: " + greenScore;
+        scoreGoal.text = "Green Goal!";
     }
     public void addBlueScore()
     {
         blueScore++;
-        rightScoreText.text = "Green: " + blueScore;
-        scoreGoal.text = "Green Goal";
+        rightScoreText.text = "Blue: " + blueScore;
+        scoreGoal.text = "Blue Goal!";
     }
     public IEnumerator reset()
     {
@@ -30,6 +32,15 @@ public class ScoreManager : MonoBehaviour
         greenPlayer.position = new Vector2(-20, 0);
         bluePlayer.position = new Vector2(20, 0);
         scoreGoal.text = "";
+        rb.linearVelocity = Vector2.zero;
+        if (blueScore == 3)
+        {
+            endGame.text = "Blue Wins!";
+        }
+        if (greenScore == 3)
+        {
+            endGame.text = "Green Wins!";
+        }
     }
 
 }
