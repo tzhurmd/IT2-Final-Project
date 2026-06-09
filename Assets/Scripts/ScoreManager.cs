@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI leftScoreText;
@@ -10,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     public Transform ball;
     public Transform greenPlayer;
     public Transform bluePlayer;
+    public GameObject button;
     public int greenScore = 0;
     public int blueScore = 0;
     public Rigidbody2D rb;
@@ -36,11 +38,16 @@ public class ScoreManager : MonoBehaviour
         if (blueScore == 3)
         {
             endGame.text = "Blue Wins!";
+            button.SetActive(true);
         }
         if (greenScore == 3)
         {
             endGame.text = "Green Wins!";
+            button.SetActive(true);
         }
     }
-
+    public void resetGame()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

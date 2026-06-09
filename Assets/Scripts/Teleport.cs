@@ -8,5 +8,13 @@ public class Teleport : MonoBehaviour
         {
             transform.position = new Vector2(0, 0);
         }
+        if (other.CompareTag("Portal1"))
+        {
+            transform.position = new Vector2(-15, 0);
+        }
+        if (other.CompareTag("Portal2"))
+        {
+            transform.position = new Vector2(15, 0);
+        }
     }
 }
