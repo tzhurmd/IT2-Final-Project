@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
+    public Rigidbody2D rb;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Portal"))
@@ -16,5 +17,6 @@ public class Teleport : MonoBehaviour
         {
             transform.position = new Vector2(15, 0);
         }
+        rb.linearVelocity = Vector2.zero;
     }
 }
